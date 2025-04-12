@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finals Lab Task 3 - MySQL Database</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg, #000 30%, #020f1f 70%);
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      background: #0a0a0a;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 10px white;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes color-change {
+      0% { color: white; }
+      50% { color: #00f0ff; }
+      100% { color: white; }
+    }
+    h1 {
+      font-size: 2rem;
+      animation: color-change 10s ease-in-out infinite;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #00f0ff;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2.section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .step-process h3 {
+      font-size: 1.5rem;
+      margin: 20px 0 10px;
+    }
+    .step-process ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .step-process ul li {
+      margin-bottom: 10px;
+    }
+    .project-image {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 10px;
+      border: 2px solid white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+      cursor: pointer;
+    }
+    .project-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px 5px rgba(0, 240, 255, 0.8);
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #00f0ff, #007fff);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+    .download-btn i {
+      margin-right: 10px;
+    }
+    .download-btn:hover {
+      background: white;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid white;
+      background: #0a0a0a;
+      margin-top: 40px;
+      color: #aaa;
+    }
+    .preview-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+    }
+    .preview-modal img {
+      max-width: 80%;
+      max-height: 80%;
+      transition: transform 0.3s ease;
+    }
+    .preview-modal.show {
+      display: flex;
+    }
+    .preview-modal .close-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 40px; height: 40px;
+      font-size: 30px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .preview-modal .close-btn:hover {
+      background: rgba(255, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Finals Lab Task 3 - MySQL Database</h1>
+    <nav>
+      <a href="https://austincgarcia.github.io/AustinEDM/">Back to Portfolio</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2 class="section-title">Project Overview</h2>
+    <p>This portfolio focuses on learning MySQL through the creation and management of a product database. It covers fundamental tasks such as creating tables, setting constraints, inserting accurate data, and modifying fields. The aim is to gain a clear understanding of how to structure and manage a database using basic SQL commands.</p>
+
+    <a href="https://github.com/user-attachments/files/19719770/GARCIA.-.LAB.TASK.3.-.FINALS.docx" class="download-btn" target="_blank">
+      <i class="fas fa-file-download"></i> Download Document
+    </a>
+
+    <div class="step-process">
+      <h3>Step by Step Process</h3>
+      <ul>
+        <li><strong>Create the Table:</strong> Create a `products` table with:
+          <ul>
+            <li>`id` (auto-increment, primary key)</li>
+            <li>`product_name` (VARCHAR(100), NOT NULL)</li>
+            <li>`price` (DECIMAL)</li>
+          </ul>
+        </li>
+        <li><strong>Add a Rule:</strong> Add a <code>CHECK</code> constraint to ensure `price > 0`.</li>
+        <li><strong>Insert Valid Products:</strong> Insert:
+          <ul>
+            <li>Laptop – 999.99</li>
+            <li>Smartphone – 599.99</li>
+            <li>Tablet – 299.99</li>
+            <li>Keyboard – 19.99</li>
+            <li>Mouse – 14.99</li>
+            <li>Desk Lamp – 24.99</li>
+            <li>Speakers – 9.99</li>
+          </ul>
+        </li>
+        <li><strong>Update the Table:</strong> Alter `product_name` to support up to 120 characters.</li>
+      </ul>
+    </div>
+
+    <h2 class="section-title">Screenshots</h2>
+
+    <h3>Query Statements</h3>
+    <img src="https://github.com/user-attachments/assets/8951be8c-adc5-45cd-8d50-447e3456f08a" alt="Task 1" class="project-image" onclick="openPreview(this)">
+    <img src="https://github.com/user-attachments/assets/233a8566-fd94-4841-b0ef-e4528b9d7499" alt="Task 2" class="project-image" onclick="openPreview(this)">
+    <img src="https://github.com/user-attachments/assets/08a50491-830f-4bbc-9cdb-96dfa4a85672" alt="Task 3" class="project-image" onclick="openPreview(this)">
+    <img src="https://github.com/user-attachments/assets/706036a3-9280-4926-8c95-ac43e41aaacb" alt="Task 4" class="project-image" onclick="openPreview(this)">
+
+    <h3>Table Structure</h3>
+    <img src="https://github.com/user-attachments/assets/a8c5b9c0-0773-41cf-8f4c-0c0c94b60e8a" alt="Table Structure 1" class="project-image" onclick="openPreview(this)">
+    <img src="https://github.com/user-attachments/assets/75d856f4-1a85-4b4a-beb0-c86853b7bad5" alt="Table Structure 2" class="project-image" onclick="openPreview(this)">
+
+    <h3>ER Diagram</h3>
+    <img src="https://github.com/user-attachments/assets/0ef8d273-5218-44d9-a93a-df9627436c86" alt="ER Diagram" class="project-image" onclick="openPreview(this)">
+  </section>
+
+  <footer>
+    <p>© 2025 Austin's EDM Portfolio. All rights reserved.</p>
+  </footer>
+
+  <div id="preview-modal" class="preview-modal">
+    <button class="close-btn" onclick="closePreview()">×</button>
+    <img id="preview-image" src="" alt="Preview Image">
+  </div>
+
+  <script>
+    function openPreview(image) {
+      const modal = document.getElementById("preview-modal");
+      const previewImage = document.getElementById("preview-image");
+      previewImage.src = image.src;
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePreview() {
+      const modal = document.getElementById("preview-modal");
+      modal.classList.remove("show");
+      document.body.style.overflow = "auto";
+    }
+  </script>
+
+</body>
+</html>
